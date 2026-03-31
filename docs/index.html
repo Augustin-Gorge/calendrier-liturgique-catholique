@@ -193,8 +193,8 @@
         }
 
         li {
-            margin-bottom: 10px;
-            line-height: 1.5;
+            margin-bottom: 12px;
+            line-height: 1.8;
         }
         
         li:last-child {
@@ -210,15 +210,17 @@
         .action-chip {
             display: inline-block;
             padding: 2px 8px;
+            margin: 3px 0;
             border-radius: 6px;
             background: var(--chip-bg);
             color: var(--accent-dark);
             font-weight: 700;
             font-size: 0.95rem;
+            vertical-align: middle;
         }
 
         .warning-note {
-            margin-top: 28px;
+            margin-top: 12px;
             padding: 12px 16px;
             background: #fcf1ef;
             border-left: 4px solid var(--accent);
@@ -227,14 +229,13 @@
             color: var(--text);
             display: flex;
             gap: 12px;
-            align-items: center; /* Modifié pour centrer verticalement */
+            align-items: center;
             font-style: italic;
         }
 
         .warning-note svg {
             color: var(--accent);
             flex-shrink: 0;
-            /* margin-top: 2px; supprimé pour un alignement parfait avec center */
         }
 
     </style>
@@ -293,8 +294,7 @@
             <strong class="step-title">Solution 1 : Depuis Réglages</strong>
             <ul>
                 <li>Allez dans <span class="action-chip">Réglages</span> > <span class="action-chip">Calendrier</span> > <span class="action-chip">Comptes Calendrier</span>.</li>
-                <li>Appuyez sur <span class="action-chip">Ajouter un compte</span>, puis <span class="action-chip">Ajouter un autre compte...</span>.</li>
-                <li>Choisissez <span class="action-chip">Calendrier (abonnement)</span>.</li>
+                <li>Appuyez sur <span class="action-chip">Ajouter un compte</span> > <span class="action-chip">Ajouter un autre compte...</span> > <span class="action-chip">Calendrier (abonnement)</span>.</li>
                 <li>Collez le lien du calendrier, puis touchez <span class="action-chip">Suivant</span> et <span class="action-chip">Enregistrer</span>.</li>
             </ul>
         </div>
