@@ -8,7 +8,7 @@ Modifications et maintenance par [augustin-gorge](https://github.com/augustin-go
 
 [Télécharger le calendrier ICS](https://augustin-gorge.github.io/calendrier-liturgique-catholique/calendrier-liturgique-catholique-romain.ics)
 
-[Aperçu du calendrier](https://augustin-gorge.github.io/calendrier-liturgique-catholique/)
+[Voir le site explicatif](https://augustin-gorge.github.io/calendrier-liturgique-catholique/)
 
 ## S’abonner au calendrier
 
@@ -36,7 +36,7 @@ Cela conduit à un total de 43 évènements au plus.
 
 ## Calendrier liturgique tridentin
 
-[Ordo](http://laportelatine.org/accueil/Ordo/ordo.php)
+[Consulter l'Ordo tridentin (La Porte Latine)](http://laportelatine.org/accueil/Ordo/ordo.php)
 
 ## Ordre de préséance des fêtes
 
