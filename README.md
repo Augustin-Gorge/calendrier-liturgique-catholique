@@ -28,13 +28,8 @@ Le calendrier contient :
  - le mercredi des cendres,
  - le jour des morts,
  - les solennités,
- - les dimanches de l’Avent,
- - les dimanches de Carême,
- - les dimanches de Pâques,
  - les fêtes du Seigneur,
  - les fêtes de la Vierge Marie.
-
-Cela conduit à un total de 43 évènements au plus.
 
 ## Calendrier liturgique tridentin
 
