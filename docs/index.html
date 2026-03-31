@@ -47,7 +47,7 @@
             border-radius: 12px;
             padding: 24px;
             text-align: center;
-            margin-bottom: 28px;
+            margin-bottom: 32px;
         }
 
         h1 {
@@ -81,7 +81,8 @@
             flex-wrap: wrap;
             gap: 16px;
             justify-content: center;
-            margin-bottom: 12px;
+            margin: 32px 0;
+            position: relative;
         }
 
         .button {
@@ -142,17 +143,27 @@
         }
 
         .copy-status {
-            text-align: center;
-            min-height: 1.5em;
-            color: var(--muted);
-            font-size: 0.95rem;
-            margin-bottom: 32px;
-            font-style: italic;
+            position: absolute;
+            bottom: -26px;
+            left: 50%;
+            transform: translateX(-50%) scale(0.85);
+            color: var(--accent);
+            font-size: 1rem;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.1s ease-out, transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            pointer-events: none;
+            white-space: nowrap;
+        }
+
+        .copy-status.show {
+            opacity: 1;
+            transform: translateX(-50%) scale(1);
         }
 
         /* Typographie et structure du contenu */
         h2 {
-            margin-top: 40px;
+            margin-top: 32px;
             margin-bottom: 20px;
             color: var(--accent-dark);
             border-bottom: 1px solid var(--border);
@@ -206,6 +217,26 @@
             font-size: 0.95rem;
         }
 
+        .warning-note {
+            margin-top: 28px;
+            padding: 12px 16px;
+            background: #fcf1ef;
+            border-left: 4px solid var(--accent);
+            border-radius: 6px;
+            font-size: 0.95rem;
+            color: var(--text);
+            display: flex;
+            gap: 12px;
+            align-items: center; /* Modifié pour centrer verticalement */
+            font-style: italic;
+        }
+
+        .warning-note svg {
+            color: var(--accent);
+            flex-shrink: 0;
+            /* margin-top: 2px; supprimé pour un alignement parfait avec center */
+        }
+
     </style>
 </head>
 <body>
@@ -231,16 +262,15 @@
             <a class="button button-secondary" href="./calendrier-liturgique-catholique-romain.ics">
                 Ouvrir le calendrier
             </a>
+            <div id="copy-status" class="copy-status" aria-live="polite"></div>
         </div>
-        
-        <div id="copy-status" class="copy-status" aria-live="polite"></div>
 
         <h2>Google Agenda</h2>
 
         <div class="step">
             <strong class="step-title">Étape 1 : Ajouter le calendrier depuis le web</strong>
             <ul>
-                <li>Ouvrez le navigateur de votre téléphone et allez sur <a class="link" href="https://calendar.google.com">Google Agenda</a>.</li>
+                <li>Ouvrez votre navigateur et allez sur <a class="link" href="https://calendar.google.com">Google Agenda</a>.</li>
                 <li>Si vous êtes sur téléphone, en bas, à côté de <span class="action-chip">Afficher</span>, cliquez sur <span class="action-chip">Bureau</span> pour afficher la version pour ordinateur.</li>
                 <li>Appuyez sur le menu en hamburger en haut à gauche <span class="action-chip">≡</span>.</li>
                 <li>Dans la colonne de gauche, à côté de <span class="action-chip">Autres agendas</span>, appuyez sur <span class="action-chip">+</span>.</li>
@@ -263,7 +293,8 @@
             <strong class="step-title">Solution 1 : Depuis Réglages</strong>
             <ul>
                 <li>Allez dans <span class="action-chip">Réglages</span> > <span class="action-chip">Calendrier</span> > <span class="action-chip">Comptes Calendrier</span>.</li>
-                <li>Appuyez sur <span class="action-chip">Ajouter un compte</span> > <span class="action-chip">Ajouter un autre compte...</span>, <span class="action-chip">Calendrier (abonnement)</span>.</li>
+                <li>Appuyez sur <span class="action-chip">Ajouter un compte</span>, puis <span class="action-chip">Ajouter un autre compte...</span>.</li>
+                <li>Choisissez <span class="action-chip">Calendrier (abonnement)</span>.</li>
                 <li>Collez le lien du calendrier, puis touchez <span class="action-chip">Suivant</span> et <span class="action-chip">Enregistrer</span>.</li>
             </ul>
         </div>
@@ -274,6 +305,10 @@
                 <li>Ouvrez le lien sur votre téléphone.</li>
                 <li>Quand la fenêtre s'affiche, touchez <span class="action-chip">Continuer</span>, puis <span class="action-chip">Tout ajouter</span>.</li>
             </ul>
+            <div class="warning-note">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                <span><strong>Attention :</strong> Cette méthode ne synchronise pas les futures mises à jour du calendrier.</span>
+            </div>
         </div>
     </main>
 
@@ -292,7 +327,7 @@
             
             try {
                 document.execCommand('copy');
-                showStatus("Lien copié dans le presse-papiers !");
+                showStatus("Lien copié !");
             } catch (err) {
                 showStatus("Erreur lors de la copie du lien.");
             }
@@ -301,8 +336,9 @@
 
         function showStatus(message) {
             copyStatus.textContent = message;
+            copyStatus.classList.add("show");
             setTimeout(() => {
-                copyStatus.textContent = "";
+                copyStatus.classList.remove("show");
             }, 3000);
         }
 
@@ -312,7 +348,7 @@
                 return;
             }
             navigator.clipboard.writeText(calendarLink).then(function() {
-                showStatus("Lien copié dans le presse-papiers !");
+                showStatus("Lien copié !");
             }, function(err) {
                 fallbackCopyTextToClipboard(calendarLink);
             });
