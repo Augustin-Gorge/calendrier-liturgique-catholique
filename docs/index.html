@@ -214,17 +214,16 @@
             <a class="link" href="./calendrier-liturgique-catholique-romain.ics">https://augustin-gorge.github.io/calendrier-liturgique-catholique/calendrier-liturgique-catholique-romain.ics</a>
         </div>
 
-        <p id="copy-status" class="copy-status" aria-live="polite"></p>
-
         <h2>Google Agenda</h2>
 
         <div class="step">
             <strong>Étape 1 : Ajouter le calendrier depuis le web</strong>
             <ul>
-                <li>Ouvrez le navigateur de votre téléphone et allez sur calendar.google.com.</li>
-                <li>Activez <span class="action-chip">Version pour ordinateur</span> dans le navigateur.</li>
+                <li>Ouvrez le navigateur de votre téléphone et allez sur <a class="link" href="https://calendar.google.com">Google Agenda</a>.</li>
+                <li>Si vous êtes sur téléphone, en bas, à côté de <span class="action-chip">Afficher</span>, cliquez sur <span class="action-chip">Bureau</span> pour afficher la version pour ordinateur.</li>
+                <li>Appuyez sur le menu en hamburger en haut à gauche <span class="action-chip">≡</span>.</li>
                 <li>Dans la colonne de gauche, a cote de <span class="action-chip">Autres agendas</span>, appuyez sur <span class="action-chip">+</span>.</li>
-                <li>Sélectionnez <span class="action-chip">A partir du lien</span>.</li>
+                <li>Sélectionnez <span class="action-chip">A partir de l'URL</span>.</li>
                 <li>Collez le lien du calendrier puis appuyez sur <span class="action-chip">Ajouter l'agenda</span>.</li>
             </ul>
         </div>
@@ -233,30 +232,26 @@
             <strong>Étape 2 : Activer l'agenda dans l'application mobile</strong>
             <ul>
                 <li>Ouvrez l'application Google Agenda.</li>
-                <li>Appuyez sur le menu (trois lignes), puis <span class="action-chip">Parametres</span>.</li>
-                <li>Cherchez le nouvel agenda sous votre compte Google.</li>
-                <li>Si besoin, appuyez sur <span class="action-chip">Plus</span> ou <span class="action-chip">Afficher plus d'agendas</span>.</li>
-                <li>Activez <span class="action-chip">Synchronisation</span> sur ce nouvel agenda.</li>
+                <li>Appuyez sur le menu en hamburger en haut à gauche <span class="action-chip">≡</span>, puis <span class="action-chip">Parametres</span>.</li>
+                <li>Touchez dans la liste le nouvel agenda pour qu'il apparaisse dans votre calendrier.</li>
             </ul>
         </div>
 
         <h2>iPhone (Calendrier Apple)</h2>
         <div class="step">
-            <strong>Solution 1 : Passer par Safari</strong>
+            <strong>Solution 1 : Depuis Reglages</strong>
             <ul>
-                <li>Ouvrez Safari sur votre téléphone.</li>
-                <li>Collez le lien du calendrier dans la barre d'adresse, puis appuyez sur <span class="action-chip">Acceder</span>.</li>
-                <li>Quand la fenetre s'affiche, touchez <span class="action-chip">S'abonner</span>.</li>
+                <li>Allez dans <span class="action-chip">Reglages</span> &gt; <span class="action-chip">Calendrier</span> &gt; <span class="action-chip">Comptes Calendrier</span>.</li>
+                <li>Appuyez sur <span class="action-chip">Ajouter un compte</span> &gt; <span class="action-chip">Ajouter un autre compte...</span>, <span class="action-chip">Calendrier (abonnement)</span>.</li>
+                <li>Collez le lien du calendrier, puis touchez <span class="action-chip">Suivant</span> et <span class="action-chip">Enregistrer</span>.</li>
             </ul>
         </div>
 
         <div class="step">
-            <strong>Solution 2 : Depuis Reglages</strong>
+            <strong>Solution 2 : Depuis un navigateur</strong>
             <ul>
-                <li>Allez dans <span class="action-chip">Reglages</span> &gt; <span class="action-chip">Calendrier</span> &gt; <span class="action-chip">Comptes</span>.</li>
-                <li>Appuyez sur <span class="action-chip">Ajouter un compte</span> &gt; <span class="action-chip">Autre</span>.</li>
-                <li>Choisissez <span class="action-chip">Ajouter un calendrier avec abonnement</span>.</li>
-                <li>Collez le lien du calendrier, puis touchez <span class="action-chip">Suivant</span> et <span class="action-chip">Enregistrer</span>.</li>
+                <li>Ouvrez le lien sur votre téléphone.</li>
+                <li>Quand la fenetre s'affiche, touchez <span class="action-chip">Continuer</span>, puis <span class="action-chip">Tout ajouter</span></li>
             </ul>
         </div>
     </main>
@@ -270,6 +265,9 @@
             try {
                 await navigator.clipboard.writeText(calendarLink);
                 copyStatus.textContent = "Lien copié.";
+                setTimeout(() => {
+                    copyStatus.textContent = "";
+                }, 2000);
             } catch (error) {
                 copyStatus.textContent = "Copie impossible automatiquement. Copiez le lien affiché au-dessus.";
             }

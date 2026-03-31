@@ -11,7 +11,7 @@ import static java.util.stream.Collectors.toList;
 public class FabricationCalendriers {
 
     public static void main(String[] args) throws IOException {
-        final List<DateLiturgique> dates = IntStream.range(1900, 2100)
+        final List<DateLiturgique> dates = IntStream.rangeClosed(2024, 2100)
             .mapToObj(Calendriers::solennitesFetesDuSeigneurEtDeLaVierge)
             .flatMap(Collection::stream)
             .collect(toList());

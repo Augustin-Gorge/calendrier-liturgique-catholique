@@ -10,6 +10,8 @@ Modifications et maintenance par [augustin-gorge](https://github.com/augustin-go
 
 [Voir le site explicatif](https://augustin-gorge.github.io/calendrier-liturgique-catholique/)
 
+Période couverte : de 2024 à 2100 (inclus).
+
 ## S’abonner au calendrier
 
 URL d’abonnement (à copier dans ton application de calendrier) :
