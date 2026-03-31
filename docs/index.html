@@ -13,6 +13,7 @@
             --accent: #7b2f21;
             --accent-dark: #5d1f14;
             --border: #e7ddd2;
+            --chip-bg: #f2ebe3;
         }
 
         * {
@@ -35,62 +36,77 @@
             background: var(--card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 28px;
+            padding: 32px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+        }
+
+        /* En-tête */
+        .intro-block {
+            background: #fcf8f2;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            margin-bottom: 28px;
         }
 
         h1 {
             margin-top: 0;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             font-size: clamp(1.5rem, 3vw, 2.2rem);
-            text-align: center;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 16px;
+            color: var(--accent-dark);
         }
 
         .title-symbol {
             color: var(--accent);
-            font-size: 1.8em;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        p {
-            line-height: 1.55;
-            margin: 8px 0;
+        .intro-block p {
+            margin: 0;
+            line-height: 1.6;
+            color: var(--text);
+            font-size: 1.05rem;
         }
 
-        .muted {
-            color: var(--muted);
-        }
-
+        /* Boutons d'action */
         .actions {
-            margin: 18px 0 22px;
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 16px;
             justify-content: center;
+            margin-bottom: 12px;
         }
 
         .button {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-family: inherit;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease, border-color 0.12s ease;
+        }
+
+        .button-primary {
             background: var(--accent);
             color: #fff;
-            padding: 11px 16px;
-            border-radius: 10px;
-            font-weight: 600;
             border: 1px solid #4b170f;
-            cursor: pointer;
             box-shadow: 0 4px 0 #4b170f;
-            transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
         }
 
-        .button:hover,
-        .button:focus-visible {
+        .button-primary:hover,
+        .button-primary:focus-visible {
             background: var(--accent-dark);
             transform: translateY(-1px);
             box-shadow: 0 6px 0 #4b170f;
@@ -98,198 +114,209 @@
             outline-offset: 2px;
         }
 
-        .button:active {
+        .button-primary:active {
             transform: translateY(2px);
             box-shadow: 0 2px 0 #4b170f;
         }
 
-        .link {
-            color: var(--accent);
-            word-break: break-all;
-            font-weight: 600;
+        .button-secondary {
+            background: var(--card);
+            color: var(--accent-dark);
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 0 var(--border);
         }
 
-        .link-wrapper {
-            margin: 8px 0 4px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .copy-icon-button {
-            width: 42px;
-            min-width: 42px;
-            height: 42px;
-            border-radius: 10px;
-            border: 1px solid #4b170f;
-            background: var(--accent);
-            cursor: pointer;
-            position: relative;
-            box-shadow: 0 4px 0 #4b170f;
-            transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
-        }
-
-        .copy-icon-button::before,
-        .copy-icon-button::after {
-            content: "";
-            position: absolute;
-            width: 13px;
-            height: 13px;
-            border: 2px solid #fff;
-            border-radius: 3px;
-        }
-
-        .copy-icon-button::before {
-            top: 12px;
-            left: 16px;
-        }
-
-        .copy-icon-button::after {
-            top: 16px;
-            left: 11px;
-            background: transparent;
-        }
-
-        .copy-icon-button:hover,
-        .copy-icon-button:focus-visible {
-            background: var(--accent-dark);
+        .button-secondary:hover,
+        .button-secondary:focus-visible {
+            background: #fdfaf6;
+            border-color: #d0c5b8;
             transform: translateY(-1px);
-            box-shadow: 0 6px 0 #4b170f;
+            box-shadow: 0 6px 0 #d0c5b8;
             outline: 2px solid #d6b088;
             outline-offset: 2px;
         }
 
-        .copy-icon-button:active {
+        .button-secondary:active {
             transform: translateY(2px);
-            box-shadow: 0 2px 0 #4b170f;
+            box-shadow: 0 2px 0 #d0c5b8;
         }
 
-        .direct-link-block {
+        .copy-status {
             text-align: center;
-            margin-top: 12px;
-        }
-
-        .action-chip {
-            display: inline-block;
-            padding: 2px 8px;
-            border-radius: 999px;
-            border: 1px solid #caa57f;
-            background: #fff0de;
-            color: #5d1f14;
-            font-weight: 700;
+            min-height: 1.5em;
+            color: var(--muted);
             font-size: 0.95rem;
+            margin-bottom: 32px;
+            font-style: italic;
         }
 
+        /* Typographie et structure du contenu */
         h2 {
-            margin-top: 22px;
-            margin-bottom: 8px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: var(--accent-dark);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 8px;
+            font-size: 1.5rem;
         }
 
         .step {
-            margin-top: 12px;
-            padding: 12px;
+            margin-top: 16px;
+            padding: 20px 24px;
             border: 1px solid var(--border);
             border-radius: 12px;
             background: #fffaf2;
         }
 
-        .copy-status {
-            margin-top: 8px;
-            min-height: 1.2em;
-            color: var(--muted);
-            font-size: 0.95rem;
+        .step-title {
+            display: block;
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            font-weight: bold;
         }
 
         ul {
-            margin-top: 8px;
-            padding-left: 22px;
+            margin: 0;
+            padding-left: 24px;
         }
 
         li {
-            margin-bottom: 7px;
+            margin-bottom: 10px;
+            line-height: 1.5;
         }
+        
+        li:last-child {
+            margin-bottom: 0;
+        }
+
+        a.link {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* Pilules (mots clés) */
+        .action-chip {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 6px;
+            background: var(--chip-bg);
+            color: var(--accent-dark);
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
     </style>
 </head>
 <body>
     <main>
-        <h1><span class="title-symbol"><svg width="1.2em" height="1.2em" viewBox="0 0 24 24" fill="none" stroke="#7b2f21" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></span>Calendrier liturgique catholique<span class="title-symbol"><svg width="1.2em" height="1.2em" viewBox="0 0 24 24" fill="none" stroke="#7b2f21" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><line x1="5" y1="9" x2="19" y2="9"></line></svg></span></h1>
-
-        <p>Les calendriers classiques omettent souvent les grandes fêtes et solennités de l'Église catholique. Ce calendrier remedie à ce problème.
+        <div class="intro-block">
+            <h1>
+                <span class="title-symbol">
+                    <svg width="1.2em" height="1.2em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                </span>
+                Calendrier liturgique catholique
+                <span class="title-symbol">
+                    <svg width="1.2em" height="1.2em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="22"></line><line x1="6" y1="9" x2="18" y2="9"></line></svg>
+                </span>
+            </h1>
+            <p>Les calendriers classiques omettent souvent les grandes fêtes et solennités de l'Église catholique. Ce calendrier remédie à cela.</p>
+        </div>
 
         <div class="actions">
-            <a class="button" href="./calendrier-liturgique-catholique-romain.ics">Ouvrir le lien du calendrier</a>
+            <button id="copy-btn" class="button button-primary" type="button">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                Copier le lien
+            </button>
+            <a class="button button-secondary" href="./calendrier-liturgique-catholique-romain.ics">
+                Ouvrir le calendrier
+            </a>
         </div>
         
-        <p id="copy-status" class="copy-status" aria-live="polite"></p>
-
-
-        <div class="link-wrapper">
-            <button id="copy-link" class="copy-icon-button" type="button" title="Copier le lien" aria-label="Copier le lien"></button>
-            <a class="link" href="./calendrier-liturgique-catholique-romain.ics">https://augustin-gorge.github.io/calendrier-liturgique-catholique/calendrier-liturgique-catholique-romain.ics</a>
-        </div>
+        <div id="copy-status" class="copy-status" aria-live="polite"></div>
 
         <h2>Google Agenda</h2>
 
         <div class="step">
-            <strong>Étape 1 : Ajouter le calendrier depuis le web</strong>
+            <strong class="step-title">Étape 1 : Ajouter le calendrier depuis le web</strong>
             <ul>
                 <li>Ouvrez le navigateur de votre téléphone et allez sur <a class="link" href="https://calendar.google.com">Google Agenda</a>.</li>
                 <li>Si vous êtes sur téléphone, en bas, à côté de <span class="action-chip">Afficher</span>, cliquez sur <span class="action-chip">Bureau</span> pour afficher la version pour ordinateur.</li>
                 <li>Appuyez sur le menu en hamburger en haut à gauche <span class="action-chip">≡</span>.</li>
-                <li>Dans la colonne de gauche, a cote de <span class="action-chip">Autres agendas</span>, appuyez sur <span class="action-chip">+</span>.</li>
-                <li>Sélectionnez <span class="action-chip">A partir de l'URL</span>.</li>
+                <li>Dans la colonne de gauche, à côté de <span class="action-chip">Autres agendas</span>, appuyez sur <span class="action-chip">+</span>.</li>
+                <li>Sélectionnez <span class="action-chip">À partir de l'URL</span>.</li>
                 <li>Collez le lien du calendrier puis appuyez sur <span class="action-chip">Ajouter l'agenda</span>.</li>
             </ul>
         </div>
 
         <div class="step">
-            <strong>Étape 2 : Activer l'agenda dans l'application mobile</strong>
+            <strong class="step-title">Étape 2 : Activer l'agenda dans l'application mobile</strong>
             <ul>
                 <li>Ouvrez l'application Google Agenda.</li>
-                <li>Appuyez sur le menu en hamburger en haut à gauche <span class="action-chip">≡</span>, puis <span class="action-chip">Parametres</span>.</li>
+                <li>Appuyez sur le menu en hamburger en haut à gauche <span class="action-chip">≡</span>, puis <span class="action-chip">Paramètres</span>.</li>
                 <li>Touchez dans la liste le nouvel agenda pour qu'il apparaisse dans votre calendrier.</li>
             </ul>
         </div>
 
         <h2>iPhone (Calendrier Apple)</h2>
         <div class="step">
-            <strong>Solution 1 : Depuis Reglages</strong>
+            <strong class="step-title">Solution 1 : Depuis Réglages</strong>
             <ul>
-                <li>Allez dans <span class="action-chip">Reglages</span> &gt; <span class="action-chip">Calendrier</span> &gt; <span class="action-chip">Comptes Calendrier</span>.</li>
-                <li>Appuyez sur <span class="action-chip">Ajouter un compte</span> &gt; <span class="action-chip">Ajouter un autre compte...</span>, <span class="action-chip">Calendrier (abonnement)</span>.</li>
+                <li>Allez dans <span class="action-chip">Réglages</span> > <span class="action-chip">Calendrier</span> > <span class="action-chip">Comptes Calendrier</span>.</li>
+                <li>Appuyez sur <span class="action-chip">Ajouter un compte</span> > <span class="action-chip">Ajouter un autre compte...</span>, <span class="action-chip">Calendrier (abonnement)</span>.</li>
                 <li>Collez le lien du calendrier, puis touchez <span class="action-chip">Suivant</span> et <span class="action-chip">Enregistrer</span>.</li>
             </ul>
         </div>
 
         <div class="step">
-            <strong>Solution 2 : Depuis un navigateur</strong>
+            <strong class="step-title">Solution 2 : Depuis un navigateur</strong>
             <ul>
                 <li>Ouvrez le lien sur votre téléphone.</li>
-                <li>Quand la fenetre s'affiche, touchez <span class="action-chip">Continuer</span>, puis <span class="action-chip">Tout ajouter</span></li>
+                <li>Quand la fenêtre s'affiche, touchez <span class="action-chip">Continuer</span>, puis <span class="action-chip">Tout ajouter</span>.</li>
             </ul>
         </div>
     </main>
 
     <script>
         const calendarLink = "https://augustin-gorge.github.io/calendrier-liturgique-catholique/calendrier-liturgique-catholique-romain.ics";
-        const copyButton = document.getElementById("copy-link");
+        const copyBtn = document.getElementById("copy-btn");
         const copyStatus = document.getElementById("copy-status");
 
-        async function copyCalendarLink() {
+        function fallbackCopyTextToClipboard(text) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position = "fixed";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
             try {
-                await navigator.clipboard.writeText(calendarLink);
-                copyStatus.textContent = "Lien copié.";
-                setTimeout(() => {
-                    copyStatus.textContent = "";
-                }, 2000);
-            } catch (error) {
-                copyStatus.textContent = "Copie impossible automatiquement. Copiez le lien affiché au-dessus.";
+                document.execCommand('copy');
+                showStatus("Lien copié dans le presse-papiers !");
+            } catch (err) {
+                showStatus("Erreur lors de la copie du lien.");
             }
+            document.body.removeChild(textArea);
         }
 
-        if (copyButton) {
-            copyButton.addEventListener("click", copyCalendarLink);
+        function showStatus(message) {
+            copyStatus.textContent = message;
+            setTimeout(() => {
+                copyStatus.textContent = "";
+            }, 3000);
         }
+
+        copyBtn.addEventListener("click", () => {
+            if (!navigator.clipboard) {
+                fallbackCopyTextToClipboard(calendarLink);
+                return;
+            }
+            navigator.clipboard.writeText(calendarLink).then(function() {
+                showStatus("Lien copié dans le presse-papiers !");
+            }, function(err) {
+                fallbackCopyTextToClipboard(calendarLink);
+            });
+        });
     </script>
 </body>
 </html>
