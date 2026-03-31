@@ -13,15 +13,25 @@ import java.util.UUID;
 public class CalendrierFabrique {
 
 	public static void creerCalendrier(String path, List<DateLiturgique> dates) throws IOException {
-		Files.write(Paths.get(path), lignesCalendrier(dates), StandardCharsets.UTF_8);
+		Files.write(Paths.get(path), lignesCalendrier(dates, "", ""), StandardCharsets.UTF_8);
 	}
 
-	private static List<String> lignesCalendrier(List<DateLiturgique> dates) {
+	public static void creerCalendrier(String path, List<DateLiturgique> dates, String calendarName, String description) throws IOException {
+		Files.write(Paths.get(path), lignesCalendrier(dates, calendarName, description), StandardCharsets.UTF_8);
+	}
+
+	private static List<String> lignesCalendrier(List<DateLiturgique> dates, String calendarName, String description) {
 		List<String> lines = new ArrayList<>();
 		lines.add("BEGIN:VCALENDAR");
 		lines.add("PRODID:-//Romain Warnan//Solennités et fêtes catholiques//FR");
 		lines.add("VERSION:2.0");
 		lines.add("CALSCALE:GREGORIAN");
+				if (!calendarName.isEmpty()) {
+					lines.add("X-WR-CALNAME:" + calendarName);
+				}
+				if (!description.isEmpty()) {
+					lines.add("X-WR-CALDESC:" + description);
+				}
 		dates.stream()
 			.map(CalendrierFabrique::lignesEvenement)
 			.forEach(lines::addAll);
