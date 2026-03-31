@@ -1,19 +1,283 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0; url=./calendrier-liturgique-catholique-romain.ics">
-    <title>Redirection vers le calendrier ICS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendrier liturgique catholique</title>
+    <style>
+        :root {
+            --bg: #f7f4ef;
+            --card: #fffdf9;
+            --text: #2b2a28;
+            --muted: #6f675f;
+            --accent: #7b2f21;
+            --accent-dark: #5d1f14;
+            --border: #e7ddd2;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Georgia, "Times New Roman", serif;
+            background: radial-gradient(circle at top, #fff8ea 0%, var(--bg) 45%, #efe7dc 100%);
+            color: var(--text);
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            padding: 24px;
+        }
+
+        main {
+            width: min(820px, 100%);
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+        }
+
+        h1 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            text-align: center;
+        }
+
+        p {
+            line-height: 1.55;
+            margin: 8px 0;
+        }
+
+        .muted {
+            color: var(--muted);
+        }
+
+        .actions {
+            margin: 18px 0 22px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .button {
+            display: inline-block;
+            text-decoration: none;
+            background: var(--accent);
+            color: #fff;
+            padding: 11px 16px;
+            border-radius: 10px;
+            font-weight: 600;
+            border: 1px solid #4b170f;
+            cursor: pointer;
+            box-shadow: 0 4px 0 #4b170f;
+            transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+        }
+
+        .button:hover,
+        .button:focus-visible {
+            background: var(--accent-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 0 #4b170f;
+            outline: 2px solid #d6b088;
+            outline-offset: 2px;
+        }
+
+        .button:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 #4b170f;
+        }
+
+        .link {
+            color: var(--accent);
+            word-break: break-all;
+            font-weight: 600;
+        }
+
+        .link-wrapper {
+            margin: 8px 0 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .copy-icon-button {
+            width: 42px;
+            min-width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            border: 1px solid #4b170f;
+            background: var(--accent);
+            cursor: pointer;
+            position: relative;
+            box-shadow: 0 4px 0 #4b170f;
+            transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+        }
+
+        .copy-icon-button::before,
+        .copy-icon-button::after {
+            content: "";
+            position: absolute;
+            width: 13px;
+            height: 13px;
+            border: 2px solid #fff;
+            border-radius: 3px;
+        }
+
+        .copy-icon-button::before {
+            top: 12px;
+            left: 16px;
+        }
+
+        .copy-icon-button::after {
+            top: 16px;
+            left: 11px;
+            background: transparent;
+        }
+
+        .copy-icon-button:hover,
+        .copy-icon-button:focus-visible {
+            background: var(--accent-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 0 #4b170f;
+            outline: 2px solid #d6b088;
+            outline-offset: 2px;
+        }
+
+        .copy-icon-button:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 #4b170f;
+        }
+
+        .direct-link-block {
+            text-align: center;
+            margin-top: 12px;
+        }
+
+        .action-chip {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 999px;
+            border: 1px solid #caa57f;
+            background: #fff0de;
+            color: #5d1f14;
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        h2 {
+            margin-top: 22px;
+            margin-bottom: 8px;
+        }
+
+        .step {
+            margin-top: 12px;
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: #fffaf2;
+        }
+
+        .copy-status {
+            margin-top: 8px;
+            min-height: 1.2em;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        ul {
+            margin-top: 8px;
+            padding-left: 22px;
+        }
+
+        li {
+            margin-bottom: 7px;
+        }
+    </style>
 </head>
 <body>
-    <p>Redirection en cours vers le calendrier liturgique...</p>
-    <p>
-        Si la redirection ne fonctionne pas, utilisez ce lien :
-        <a href="./calendrier-liturgique-catholique-romain.ics">calendrier-liturgique-catholique-romain.ics</a>
-    </p>
+    <main>
+        <h1>Calendrier liturgique catholique</h1>
+
+        <div class="actions">
+            <a class="button" href="./calendrier-liturgique-catholique-romain.ics">Ouvrir le lien direct du calendrier</a>
+        </div>
+        
+        <p id="copy-status" class="copy-status" aria-live="polite"></p>
+
+
+        <div class="link-wrapper">
+            <button id="copy-link" class="copy-icon-button" type="button" title="Copier le lien" aria-label="Copier le lien"></button>
+            <a class="link" href="./calendrier-liturgique-catholique-romain.ics">https://augustin-gorge.github.io/calendrier-liturgique-catholique/calendrier-liturgique-catholique-romain.ics</a>
+        </div>
+
+        <p id="copy-status" class="copy-status" aria-live="polite"></p>
+
+        <h2>Google Agenda</h2>
+
+        <div class="step">
+            <strong>Étape 1 : Ajouter le calendrier depuis le web</strong>
+            <ul>
+                <li>Ouvrez le navigateur de votre téléphone et allez sur calendar.google.com.</li>
+                <li>Activez <span class="action-chip">Version pour ordinateur</span> dans le navigateur.</li>
+                <li>Dans la colonne de gauche, a cote de <span class="action-chip">Autres agendas</span>, appuyez sur <span class="action-chip">+</span>.</li>
+                <li>Sélectionnez <span class="action-chip">A partir du lien</span>.</li>
+                <li>Collez le lien du calendrier puis appuyez sur <span class="action-chip">Ajouter l'agenda</span>.</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <strong>Étape 2 : Activer l'agenda dans l'application mobile</strong>
+            <ul>
+                <li>Ouvrez l'application Google Agenda.</li>
+                <li>Appuyez sur le menu (trois lignes), puis <span class="action-chip">Parametres</span>.</li>
+                <li>Cherchez le nouvel agenda sous votre compte Google.</li>
+                <li>Si besoin, appuyez sur <span class="action-chip">Plus</span> ou <span class="action-chip">Afficher plus d'agendas</span>.</li>
+                <li>Activez <span class="action-chip">Synchronisation</span> sur ce nouvel agenda.</li>
+            </ul>
+        </div>
+
+        <h2>iPhone (Calendrier Apple)</h2>
+        <div class="step">
+            <strong>Solution 1 : Passer par Safari</strong>
+            <ul>
+                <li>Ouvrez Safari sur votre téléphone.</li>
+                <li>Collez le lien du calendrier dans la barre d'adresse, puis appuyez sur <span class="action-chip">Acceder</span>.</li>
+                <li>Quand la fenetre s'affiche, touchez <span class="action-chip">S'abonner</span>.</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <strong>Solution 2 : Depuis Reglages</strong>
+            <ul>
+                <li>Allez dans <span class="action-chip">Reglages</span> &gt; <span class="action-chip">Calendrier</span> &gt; <span class="action-chip">Comptes</span>.</li>
+                <li>Appuyez sur <span class="action-chip">Ajouter un compte</span> &gt; <span class="action-chip">Autre</span>.</li>
+                <li>Choisissez <span class="action-chip">Ajouter un calendrier avec abonnement</span>.</li>
+                <li>Collez le lien du calendrier, puis touchez <span class="action-chip">Suivant</span> et <span class="action-chip">Enregistrer</span>.</li>
+            </ul>
+        </div>
+    </main>
 
     <script>
-        window.location.replace("./calendrier-liturgique-catholique-romain.ics");
+        const calendarLink = "https://augustin-gorge.github.io/calendrier-liturgique-catholique/calendrier-liturgique-catholique-romain.ics";
+        const copyButton = document.getElementById("copy-link");
+        const copyStatus = document.getElementById("copy-status");
+
+        async function copyCalendarLink() {
+            try {
+                await navigator.clipboard.writeText(calendarLink);
+                copyStatus.textContent = "Lien copié.";
+            } catch (error) {
+                copyStatus.textContent = "Copie impossible automatiquement. Copiez le lien affiché au-dessus.";
+            }
+        }
+
+        if (copyButton) {
+            copyButton.addEventListener("click", copyCalendarLink);
+        }
     </script>
 </body>
 </html>
