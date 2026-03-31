@@ -49,6 +49,10 @@ public class DateLiturgique {
 	static DateLiturgique fixe(MonthDay date, int annee, String etiquette, Couleur couleur, Integer priorite) {
 		return new DateLiturgique(date.atYear(annee), resourceBundle.getProperty(etiquette), couleur, priorite);
 	}
+
+	static DateLiturgique saint(LocalDate date, String libelle) {
+		return new DateLiturgique(date, libelle, Couleur.VERT, 5);
+	}
 	
 	boolean memeJourQue(DateLiturgique... dates) {
 		return Arrays.stream(dates).anyMatch(d -> this.date.isEqual(d.date));

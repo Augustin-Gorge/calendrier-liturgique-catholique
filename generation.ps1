@@ -27,7 +27,7 @@ Write-Host "[1/3] Compilation Maven (test-compile)..." -ForegroundColor Cyan
 & $mavenCommand clean test-compile
 
 Write-Host "[2/3] Generation du calendrier..." -ForegroundColor Cyan
-java -cp "target/test-classes;target/classes" fr.plaisance.calit.FabricationCalendriers
+& $mavenCommand exec:java "-Dexec.mainClass=fr.plaisance.calit.FabricationCalendriers" "-Dexec.classpathScope=test"
 
 Write-Host "[3/3] Verification du fichier genere..." -ForegroundColor Cyan
 if (Test-Path $icsPath) {

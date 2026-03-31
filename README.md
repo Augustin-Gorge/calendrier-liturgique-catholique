@@ -6,17 +6,28 @@ Modifications et maintenance par [augustin-gorge](https://github.com/augustin-go
 
 ## Calendrier au format _iCalendar_
 
+### Calendrier liturgique catholique romain
+
 [Télécharger le calendrier ICS](https://augustin-gorge.github.io/calendrier-liturgique-catholique/calendrier-liturgique-catholique-romain.ics)
+
+URL d'abonnement : https://augustin-gorge.github.io/calendrier-liturgique-catholique/calendrier-liturgique-catholique-romain.ics
+
+### Calendrier complet
+
+[Télécharger le calendrier ICS complet](https://augustin-gorge.github.io/calendrier-liturgique-catholique/saints-du-jour.ics)
+
+URL d'abonnement : https://augustin-gorge.github.io/calendrier-liturgique-catholique/saints-du-jour.ics
 
 [Voir le site explicatif](https://augustin-gorge.github.io/calendrier-liturgique-catholique/)
 
 Période couverte : de 2024 à 2100 (inclus).
 
-## S’abonner au calendrier
+## S'abonner au calendrier
 
-URL d’abonnement (à copier dans ton application de calendrier) :
-
-https://augustin-gorge.github.io/calendrier-liturgique-catholique/calendrier-liturgique-catholique-romain.ics
+Applications courantes :
+ - Google Agenda : Autres agendas > Ajouter via URL.
+ - Apple Calendrier : Fichier > Nouvel abonnement à un calendrier.
+ - Outlook : Ajouter un calendrier > S'abonner à partir du web.
 
 Applications courantes :
  - Google Agenda : Autres agendas > Ajouter via URL.

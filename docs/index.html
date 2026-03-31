@@ -75,19 +75,59 @@
             font-size: 1.05rem;
         }
 
-        /* Boutons d'action */
-        .actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-            justify-content: center;
-            margin: 32px 0;
+        /* Cartes d'options de calendrier */
+        .options-container {
             position: relative;
+            margin: 32px 0;
+        }
+
+        .calendar-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .calendar-card {
+            background: #fff;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .calendar-card:hover {
+            border-color: #d6b088;
+            box-shadow: 0 8px 20px rgba(123, 47, 33, 0.05);
+        }
+
+        .calendar-card h3 {
+            margin: 0 0 8px 0;
+            color: var(--accent-dark);
+            font-size: 1.3rem;
+        }
+
+        .calendar-card p {
+            margin: 0 0 16px 0;
+            font-size: 0.95rem;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        /* Boutons d'action */
+        .card-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: auto;
         }
 
         .button {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
             text-decoration: none;
             padding: 12px 20px;
@@ -96,6 +136,7 @@
             font-family: inherit;
             font-size: 1rem;
             cursor: pointer;
+            width: 100%;
             transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease, border-color 0.12s ease;
         }
 
@@ -144,7 +185,7 @@
 
         .copy-status {
             position: absolute;
-            bottom: -26px;
+            bottom: -32px;
             left: 50%;
             transform: translateX(-50%) scale(0.85);
             color: var(--accent);
@@ -163,7 +204,7 @@
 
         /* Typographie et structure du contenu */
         h2 {
-            margin-top: 32px;
+            margin-top: 48px;
             margin-bottom: 20px;
             color: var(--accent-dark);
             border-bottom: 1px solid var(--border);
@@ -252,17 +293,41 @@
                     <svg width="1.2em" height="1.2em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="22"></line><line x1="6" y1="9" x2="18" y2="9"></line></svg>
                 </span>
             </h1>
-            <p>Les calendriers classiques omettent souvent les grandes fêtes et solennités de l'Église catholique. Ce calendrier remédie à cela.</p>
+            <p>Les calendriers classiques omettent souvent les grandes fêtes et solennités de l'Église catholique. Ces calendriers remédient à cela.</p>
         </div>
 
-        <div class="actions">
-            <button id="copy-btn" class="button button-primary" type="button">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                Copier le lien
-            </button>
-            <a class="button button-secondary" href="./calendrier-liturgique-catholique-romain.ics">
-                Ouvrir le calendrier
-            </a>
+        <div class="options-container">
+            <div class="calendar-options">
+                <!-- Option 1 : Classique -->
+                <div class="calendar-card">
+                    <h3>Calendrier simple</h3>
+                    <p>Contient uniquement les grandes fêtes.</p>
+                    <div class="card-actions">
+                        <button class="button button-primary copy-btn" type="button" data-link="https://augustin-gorge.github.io/calendrier-liturgique-catholique/calendrier-liturgique-catholique-romain.ics">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            Copier le lien
+                        </button>
+                        <a class="button button-secondary" href="./calendrier-liturgique-catholique-romain.ics">
+                            Ouvrir le calendrier
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Option 2 : Avec Saints -->
+                <div class="calendar-card">
+                    <h3>Calendrier complet</h3>
+                    <p>Contient aussi les fêtes des saints.</p>
+                    <div class="card-actions">
+                        <button class="button button-primary copy-btn" type="button" data-link="https://augustin-gorge.github.io/calendrier-liturgique-catholique/saints-du-jour.ics">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            Copier le lien
+                        </button>
+                        <a class="button button-secondary" href="./saints-du-jour.ics">
+                            Ouvrir le calendrier
+                        </a>
+                    </div>
+                </div>
+            </div>
             <div id="copy-status" class="copy-status" aria-live="polite"></div>
         </div>
 
@@ -294,7 +359,8 @@
             <strong class="step-title">Solution 1 : Depuis Réglages</strong>
             <ul>
                 <li>Allez dans <span class="action-chip">Réglages</span> > <span class="action-chip">Calendrier</span> > <span class="action-chip">Comptes Calendrier</span>.</li>
-                <li>Appuyez sur <span class="action-chip">Ajouter un compte</span> > <span class="action-chip">Ajouter un autre compte...</span> > <span class="action-chip">Calendrier (abonnement)</span>.</li>
+                <li>Appuyez sur <span class="action-chip">Ajouter un compte</span>, puis <span class="action-chip">Ajouter un autre compte...</span>.</li>
+                <li>Choisissez <span class="action-chip">Calendrier (abonnement)</span>.</li>
                 <li>Collez le lien du calendrier, puis touchez <span class="action-chip">Suivant</span> et <span class="action-chip">Enregistrer</span>.</li>
             </ul>
         </div>
@@ -313,8 +379,7 @@
     </main>
 
     <script>
-        const calendarLink = "https://augustin-gorge.github.io/calendrier-liturgique-catholique/calendrier-liturgique-catholique-romain.ics";
-        const copyBtn = document.getElementById("copy-btn");
+        const copyBtns = document.querySelectorAll(".copy-btn");
         const copyStatus = document.getElementById("copy-status");
 
         function fallbackCopyTextToClipboard(text) {
@@ -342,15 +407,19 @@
             }, 3000);
         }
 
-        copyBtn.addEventListener("click", () => {
-            if (!navigator.clipboard) {
-                fallbackCopyTextToClipboard(calendarLink);
-                return;
-            }
-            navigator.clipboard.writeText(calendarLink).then(function() {
-                showStatus("Lien copié !");
-            }, function(err) {
-                fallbackCopyTextToClipboard(calendarLink);
+        copyBtns.forEach(btn => {
+            btn.addEventListener("click", function() {
+                const linkToCopy = this.getAttribute("data-link");
+                
+                if (!navigator.clipboard) {
+                    fallbackCopyTextToClipboard(linkToCopy);
+                    return;
+                }
+                navigator.clipboard.writeText(linkToCopy).then(function() {
+                    showStatus("Lien copié !");
+                }, function(err) {
+                    fallbackCopyTextToClipboard(linkToCopy);
+                });
             });
         });
     </script>

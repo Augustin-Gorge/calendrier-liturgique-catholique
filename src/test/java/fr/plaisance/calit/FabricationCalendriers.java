@@ -11,10 +11,20 @@ import static java.util.stream.Collectors.toList;
 public class FabricationCalendriers {
 
     public static void main(String[] args) throws IOException {
-        final List<DateLiturgique> dates = IntStream.rangeClosed(2024, 2100)
+        final int anneeDebut = 2024;
+        final int anneeFin = 2100;
+
+        // Générer le calendrier liturgique
+        final List<DateLiturgique> dates = IntStream.rangeClosed(anneeDebut, anneeFin)
             .mapToObj(Calendriers::solennitesFetesDuSeigneurEtDeLaVierge)
             .flatMap(Collection::stream)
             .collect(toList());
         creerCalendrier("docs/calendrier-liturgique-catholique-romain.ics", dates);
+
+        // Générer le calendrier complet avec les saints du jour en priorité basse
+        final List<DateLiturgique> complet = new java.util.ArrayList<>(dates);
+        final List<DateLiturgique> saints = Calendriers.saintsPrincipauxDuJour(anneeDebut, anneeFin);
+        complet.addAll(saints);
+        creerCalendrier("docs/saints-du-jour.ics", complet);
     }
 }
