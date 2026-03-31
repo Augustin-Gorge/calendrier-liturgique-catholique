@@ -1,10 +1,25 @@
 # Calendrier liturgique catholique
 
+Ce dépôt est un fork du projet original de [Romain Warnan](https://github.com/romain-warnan).
+
+Modifications et maintenance par [augustin-gorge](https://github.com/augustin-gorge).
+
 ## Calendrier au format _iCalendar_
 
-`https://romain-warnan.github.io/calendrier-liturgique/calendrier-liturgique-catholique.ics`
+[Télécharger le calendrier ICS](https://augustin-gorge.github.io/calendrier-liturgique-catholique/calendrier-liturgique-catholique-romain.ics)
 
-[Aperçu du calendrier](https://romain-warnan.github.io/calendrier-liturgique)
+[Aperçu du calendrier](https://augustin-gorge.github.io/calendrier-liturgique-catholique/)
+
+## S’abonner au calendrier
+
+URL d’abonnement (à copier dans ton application de calendrier) :
+
+https://augustin-gorge.github.io/calendrier-liturgique-catholique/calendrier-liturgique-catholique-romain.ics
+
+Applications courantes :
+ - Google Agenda : Autres agendas > Ajouter via URL.
+ - Apple Calendrier : Fichier > Nouvel abonnement à un calendrier.
+ - Outlook : Ajouter un calendrier > S’abonner à partir du web.
 
 Le calendrier contient :
  - le _triduum_ pascal,
