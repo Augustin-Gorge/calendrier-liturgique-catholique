@@ -44,6 +44,18 @@
             margin-bottom: 10px;
             font-size: clamp(1.5rem, 3vw, 2.2rem);
             text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .title-symbol {
+            color: var(--accent);
+            font-size: 1.8em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         p {
@@ -200,10 +212,12 @@
 </head>
 <body>
     <main>
-        <h1>Calendrier liturgique catholique</h1>
+        <h1><span class="title-symbol"><svg width="1.2em" height="1.2em" viewBox="0 0 24 24" fill="none" stroke="#7b2f21" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></span>Calendrier liturgique catholique<span class="title-symbol"><svg width="1.2em" height="1.2em" viewBox="0 0 24 24" fill="none" stroke="#7b2f21" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><line x1="5" y1="9" x2="19" y2="9"></line></svg></span></h1>
+
+        <p>Les calendriers classiques omettent souvent les grandes fêtes et solennités de l'Église catholique. Ce calendrier remedie à ce problème.
 
         <div class="actions">
-            <a class="button" href="./calendrier-liturgique-catholique-romain.ics">Ouvrir le lien direct du calendrier</a>
+            <a class="button" href="./calendrier-liturgique-catholique-romain.ics">Ouvrir le lien du calendrier</a>
         </div>
         
         <p id="copy-status" class="copy-status" aria-live="polite"></p>
