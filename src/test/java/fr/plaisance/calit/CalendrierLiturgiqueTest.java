@@ -91,7 +91,7 @@ public class CalendrierLiturgiqueTest {
 		int annee = 2018;
 		DateLiturgique date = CalendrierLiturgique.premierDimancheCareme(annee);
 		assertThat(date.getDate()).isEqualTo(LocalDate.of(annee, Month.FEBRUARY, 18));
-		assertThat(date.getLibelle()).containsIgnoringCase("invocabit");
+		assertThat(date.getLibelle()).contains("Premier dimanche de Carême");
 	}
 
 	@Test
@@ -99,7 +99,7 @@ public class CalendrierLiturgiqueTest {
 		int annee = 2018;
 		DateLiturgique date = CalendrierLiturgique.deuxiemeDimancheCareme(annee);
 		assertThat(date.getDate()).isEqualTo(LocalDate.of(annee, Month.FEBRUARY, 25));
-		assertThat(date.getLibelle()).containsIgnoringCase("reminiscere");
+		assertThat(date.getLibelle()).contains("Deuxième dimanche de Carême");
 	}
 
 	@Test
@@ -107,7 +107,7 @@ public class CalendrierLiturgiqueTest {
 		int annee = 2018;
 		DateLiturgique date = CalendrierLiturgique.troisiemeDimancheCareme(annee);
 		assertThat(date.getDate()).isEqualTo(LocalDate.of(annee, Month.MARCH, 4));
-		assertThat(date.getLibelle()).containsIgnoringCase("oculi");
+		assertThat(date.getLibelle()).contains("Troisième dimanche de Carême");
 	}
 
 	@Test
@@ -115,7 +115,7 @@ public class CalendrierLiturgiqueTest {
 		int annee = 2018;
 		DateLiturgique date = CalendrierLiturgique.quatriemeDimancheCareme(annee);
 		assertThat(date.getDate()).isEqualTo(LocalDate.of(annee, Month.MARCH, 11));
-		assertThat(date.getLibelle()).containsIgnoringCase("lætare");
+		assertThat(date.getLibelle()).contains("Quatrième dimanche de Carême");
 	}
 
 	@Test
@@ -123,7 +123,7 @@ public class CalendrierLiturgiqueTest {
 		int annee = 2018;
 		DateLiturgique date = CalendrierLiturgique.cinquiemeDimancheCareme(annee);
 		assertThat(date.getDate()).isEqualTo(LocalDate.of(annee, Month.MARCH, 18));
-		assertThat(date.getLibelle()).containsIgnoringCase("judica");
+		assertThat(date.getLibelle()).contains("Cinquième dimanche de Carême");
 	}
 	
 	@Test

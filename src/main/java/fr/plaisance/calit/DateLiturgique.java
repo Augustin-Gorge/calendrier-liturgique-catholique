@@ -53,6 +53,10 @@ public class DateLiturgique {
 	static DateLiturgique saint(LocalDate date, String libelle) {
 		return new DateLiturgique(date, libelle, Couleur.VERT, 5);
 	}
+
+	static DateLiturgique compose(LocalDate date, String libelle, Couleur couleur, Integer priorite) {
+		return new DateLiturgique(date, libelle, couleur, priorite);
+	}
 	
 	boolean memeJourQue(DateLiturgique... dates) {
 		return Arrays.stream(dates).anyMatch(d -> this.date.isEqual(d.date));

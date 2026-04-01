@@ -21,10 +21,8 @@ public class FabricationCalendriers {
             .collect(toList());
         creerCalendrier("docs/calendrier-liturgique-catholique-romain.ics", dates, "Calendrier liturgique catholique romain", "Solennités, fêtes du Seigneur et de la Vierge Marie selon le calendrier romain - 2024 à 2100");
 
-        // Générer le calendrier complet avec les saints du jour en priorité basse
-        final List<DateLiturgique> complet = new java.util.ArrayList<>(dates);
-        final List<DateLiturgique> saints = Calendriers.saintsPrincipauxDuJour(anneeDebut, anneeFin);
-        complet.addAll(saints);
+        // Générer le calendrier complet avec une entrée quotidienne arbitré par préséance
+        final List<DateLiturgique> complet = Calendriers.calendrierCompletParPreseance(anneeDebut, anneeFin);
         creerCalendrier("docs/saints-du-jour.ics", complet, "Calendrier liturgique & saints", "Fêtes liturgiques catholiques et saints du jour - 2024 à 2100");
     }
 }

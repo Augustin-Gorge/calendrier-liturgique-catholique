@@ -3,10 +3,13 @@ package fr.plaisance.calit;
 import java.time.LocalDate;
 import java.time.MonthDay;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.TreeMap;
 import java.util.stream.Collectors;
 
 import static fr.plaisance.calit.CalendrierLiturgique.*;
@@ -65,13 +68,7 @@ public class Calendriers {
     }
 
     static List<DateLiturgique> saintsPrincipauxDuJour(int anneeDebut, int anneeFin) {
-        // Récupérer toutes les dates liturgiques pour exclure les jours qui ont déjà un événement
-        Set<MonthDay> joursAvecEvenement = new HashSet<>();
-        for (int annee = anneeDebut; annee <= anneeFin; annee++) {
-            solennitesFetesDuSeigneurEtDeLaVierge(annee).forEach(d -> joursAvecEvenement.add(MonthDay.of(d.getDate().getMonth(), d.getDate().getDayOfMonth())));
-        }
-
-        // Générer les saints pour les jours sans événement
+        // Générer les saints principaux pour chaque jour
         List<DateLiturgique> saints = new java.util.ArrayList<>();
         SaintsDuJour saintsDuJour = SaintsDuJour.getInstance();
 
@@ -81,18 +78,57 @@ public class Calendriers {
             
             for (LocalDate jour = debut; !jour.isAfter(fin); jour = jour.plusDays(1)) {
                 MonthDay monthDay = MonthDay.of(jour.getMonth(), jour.getDayOfMonth());
-                
-                // Ajouter le saint seulement si le jour n'a pas d'événement liturgique
-                if (!joursAvecEvenement.contains(monthDay)) {
-                    String saint = saintsDuJour.getSaintPrincipalDuJour(monthDay);
-                    if (saint != null && !saint.isEmpty() && !saint.trim().isEmpty()) {
-                        DateLiturgique event = DateLiturgique.saint(jour, saint);
-                        saints.add(event);
-                    }
+
+                String saint = saintsDuJour.getSaintPrincipalDuJour(monthDay);
+                if (saint != null && !saint.isEmpty() && !saint.trim().isEmpty()) {
+                    DateLiturgique event = DateLiturgique.saint(jour, saint);
+                    saints.add(event);
                 }
             }
         }
 
         return saints;
+    }
+
+    static List<DateLiturgique> calendrierCompletParPreseance(int anneeDebut, int anneeFin) {
+        List<DateLiturgique> calendrier = new java.util.ArrayList<>();
+        SaintsDuJour saintsDuJour = SaintsDuJour.getInstance();
+
+        for (int annee = anneeDebut; annee <= anneeFin; annee++) {
+            Map<LocalDate, DateLiturgique> evenementsLiturgiques = solennitesFetesDuSeigneurEtDeLaVierge(annee).stream()
+                .collect(Collectors.toMap(
+                    DateLiturgique::getDate,
+                    d -> d,
+                    (a, b) -> a.getPriorite() <= b.getPriorite() ? a : b,
+                    TreeMap::new
+                ));
+
+            LocalDate debut = LocalDate.of(annee, 1, 1);
+            LocalDate fin = LocalDate.of(annee, 12, 31);
+            for (LocalDate jour = debut; !jour.isAfter(fin); jour = jour.plusDays(1)) {
+                DateLiturgique evenementLiturgique = evenementsLiturgiques.get(jour);
+                String saintPrincipal = saintsDuJour.getSaintPrincipalDuJour(MonthDay.from(jour));
+                if (evenementLiturgique != null) {
+                    String libelle = evenementLiturgique.getLibelle();
+                    if (saintPrincipal != null && !saintPrincipal.trim().isEmpty()) {
+                        libelle = libelle + " - Saint principal : " + saintPrincipal.trim();
+                    }
+                    calendrier.add(DateLiturgique.compose(
+                        jour,
+                        libelle,
+                        evenementLiturgique.getCouleur(),
+                        evenementLiturgique.getPriorite()
+                    ));
+                } else if (saintPrincipal != null && !saintPrincipal.trim().isEmpty()) {
+                    calendrier.add(DateLiturgique.saint(jour, saintPrincipal.trim()));
+                } else {
+                    calendrier.add(DateLiturgique.saint(jour, "Férie"));
+                }
+            }
+        }
+
+        return calendrier.stream()
+            .sorted(Comparator.comparing(DateLiturgique::getDate))
+            .collect(Collectors.toList());
     }
 }
